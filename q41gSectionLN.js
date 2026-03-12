@@ -63,16 +63,16 @@ movieForm.addEventListener('submit', (e) => {
 
     const movies = JSON.parse(localStorage.getItem('movies')) || [];
 
-    // CHECK IF MOVIE ALREADY EXISTS
+
     const existingMovie = movies.find(movie => movie.title.toLowerCase() === title.toLowerCase());
 
     if (existingMovie) {
-        // UPDATE: average the ratings
+        // new thingy: average the ratings
         existingMovie.rating = Math.round((existingMovie.rating + selectedRating) / 2);
         existingMovie.genre = genre; 
     } 
     else {
-        // ADD NEW MOVIE
+        // adding of movies
         const movie = { title, genre, rating: selectedRating };
         movies.push(movie);
     }
@@ -86,7 +86,7 @@ movieForm.addEventListener('submit', (e) => {
     loadMovies();
 });
 
-// DELETE MOVIE FUNCTION
+// delete the movie func
 function deleteMovie(index) {
 
     const confirmDelete = confirm("Are you sure you want to delete this movie?");
@@ -103,5 +103,5 @@ function deleteMovie(index) {
     }
 }
 
-// INITIAL LOAD
+// the initial load
 loadMovies();
